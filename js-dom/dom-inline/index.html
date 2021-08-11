@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Lab</title>
+    <script defer src="gettags.js"></script>
+  </head>
+  <body>
+    <div id="parent">
+      <h1 class="child">Hello World</h1>
+      <ul class="list"></ul>
+      <button onclick="styleElement(15)">Click Me</button>
+      <img id="pic" src="" />
+      <p class="image-number"></p>
+      <button onclick="imageSelector()">Click Me</button>
+    </div>
+
+    <script>
+      let list = document.querySelector(".list");
+      let button = document.querySelector("button");
+      function styleElement(num) {
+        for (let i = 0; i <= num; i++) {
+          let listElement = document.createElement("li");
+          if (i % 2 === 0) {
+            listElement.textContent = `${i}: is even`;
+            listElement.style.backgroundColor = "red";
+          } else {
+            listElement.textContent = `${i}: is odd`;
+            listElement.style.backgroundColor = "green";
+          }
+          list.append(listElement);
+        }
+        button.style.cssText = "cursor: not-allowed; pointer-events: none";
+      }
+
+      let image = document.querySelector("#pic");
+      let paragraph = document.querySelector(".image-number");
+
+      let images = [
+        {
+          name: "Messi",
+          club: "PSG",
+          image: "images/messi-psg.jpeg",
+        },
+        {
+          name: "C.Ronaldo",
+          club: "JUVENTS",
+          image: "images/ronaldo.jpeg",
+        },
+        {
+          name: "Neymar",
+          club: "PSG",
+          image: "images/neymar.jpeg",
+        },
+        {
+          name: "Mbappe",
+          club: "PSG",
+          image: "images/mbappe.jpeg",
+        },
+        {
+          name: "Ziyech",
+          club: "CHELSEA",
+          image: "images/ziyech.jpeg",
+        },
+        {
+          name: "Lukaku",
+          club: "CHELSEA",
+          image: "images/lukaku.jpeg",
+        },
+      ];
+      function imageSelector() {
+        let randomImage = images[Math.floor(Math.random() * images.length)];
+        image.src = randomImage.image;
+        image.style.cssText = "display: block; width: 300px; height: 200px";
+        paragraph.innerHTML = `${randomImage.name}: ${randomImage.club}`;
+      }
+    </script>
+  </body>
+</html>
